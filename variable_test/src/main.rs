@@ -19,4 +19,9 @@ fn main() {
     let element = a[index];
 
     println!("The value of the element at index {index} is: {element}");
+
+    // Evaluation of variables directly into print function
+    let x = 5;
+    let y = 10;
+    println!("x = {x} and y + 2 = {}", y + 2);
 }
