@@ -5,7 +5,8 @@ fn main() {
     let rect = (width1, height1);
 
     let rectangle = Rectangle {
-        width: dbg!(width1 * 2 / 2),
+        //width: dbg!(width1 * 2 / 2),
+        width: width1,
         height: height1,
     };
 
@@ -23,14 +24,19 @@ fn main() {
         area_tuples(rect)
     );
 
-    println!("Printing out rectangle struct: {rectangle:?}"); // debug printout all in the same row
+    // println!("Printing out rectangle struct: {rectangle:?}"); // debug printout all in the same row
     println!("Printing out rectangle struct: {rectangle:#?}"); // debug printout in different rows
-    dbg!(&rectangle); // other type of debug
+                                                               // dbg!(&rectangle); // other type of debug
     println!(
         "Given a struct containing width {} and height {}, the area of the rectangle is {} square pixels.",
         rect.0,
         rect.1,
         area_struct(&rectangle)
+    );
+
+    println!(
+        "Given a struct and a method to calculate area, the area is {} square pixels.",
+        rectangle.area()
     );
 }
 
@@ -38,6 +44,12 @@ fn main() {
 struct Rectangle {
     width: u32,
     height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
 }
 
 fn area(width: u32, height: u32) -> u32 {
